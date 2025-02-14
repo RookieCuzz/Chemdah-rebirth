@@ -1,0 +1,152 @@
+not-support: '&4[Chemdah] &c抱歉, Chemdah 暂不支持当前服务端版本.'
+theme-chat-help: '使用 &e数字键 (1-9) &f选择对话并按下 &eF &f键回复.'
+track-cancel: '&7追踪已取消.'
+command-reload: '重载配置'
+command-info: '查看玩家信息'
+command-info-header: '&c[Chemdah] &7玩家信息:'
+command-info-empty: '&c[Chemdah] &7无'
+command-info-data: '&c[Chemdah] &7  数据:'
+command-info-quest:
+  ==: JSON
+  text: '&c\[Chemdah] &7  任务: &f[共 {0} 项]'
+  args:
+    - hover: '{1}'
+command-info-quest-share:
+  ==: JSON
+  text: '&c\[Chemdah] &7  任务 (共享): &f[共 {0} 项]'
+  args:
+    - hover: '{1}'
+command-info-bottom-0:
+  - ==: json
+    text: '&c\[Chemdah] &8\[上页] &7{0} / {1} [&a[下页]&a]'
+    args:
+      - hover: '点击翻页'
+        command: '/ch info {2} {3}'
+command-info-bottom-1:
+  - ==: json
+    text: '&c\[Chemdah] [&a[上页]&a] &7{0} / {1} &8\[下页]'
+    args:
+      - hover: '点击翻页'
+        command: '/ch info {2} {3}'
+command-info-bottom-2:
+  - ==: json
+    text: '&c\[Chemdah] [&a[上页]&a] &7{0} / {1} [&a[下页]&a]'
+    args:
+      - hover: '点击翻页'
+        command: '/ch info {2} {3}'
+      - hover: '点击翻页'
+        command: '/ch info {2} {4}'
+command-info-party: '&c[Chemdah] &7  队伍: &f'
+command-info-party-leader: '&c[Chemdah] &7   = 队长: &f'
+command-info-party-member: '&c[Chemdah] &7   = 队员: &f'
+command-info-body: '&c[Chemdah] &f{0}'
+command-quest-accept: '使玩家接受任务'
+command-quest-failure: '使玩家放弃任务'
+command-quest-complete: '使玩家完成任务'
+command-quest-reset: '重置玩家的任务进度'
+command-quest-stop: '取消玩家的任务'
+command-quest-trigger: '唤起玩家的 TRIGGER 任务'
+command-quest-trigger-all: '唤起所有玩家的 TRIGGER 任务'
+command-quest-info: '查看玩家的任务'
+command-quest-ui: '使玩家的打开任务页面'
+command-quest-track: '使玩家追踪任务'
+command-variables-get: '查看玩家变量'
+command-variables-add: '增加变量'
+command-variables-set: '修改变量'
+command-variables-remove: '删除变量'
+command-variables-list: '列出所有变量'
+command-variables-clear: '删除所有变量'
+command-level-add-level: '增加玩家地自定义等级'
+command-level-set-level: '修改玩家地自定义等级'
+command-level-add-exp: '增加玩家地自定义经验'
+command-level-set-exp: '修改玩家地自定义经验'
+command-script-run: '运行脚本'
+command-script-stop: '终止脚本'
+command-script-stop-all: '终止所有脚本'
+command-script-list: '列出所有脚本'
+command-script-reload: '重载所有脚本'
+command-api-scenes-create: '创建场景方块'
+command-api-scenes-cancel: '移除场景方块'
+command-argument-player: '玩家'
+command-argument-quest: '任务'
+command-argument-page: '页数'
+command-argument-ui: '页面'
+command-argument-key: '键'
+command-argument-value: '值'
+command-argument-level: '等级'
+command-argument-script: '脚本'
+command-argument-viewer: '观察者'
+command-argument-var: '变量'
+command-argument-name: '名称'
+command-argument-state: '阶段'
+command-reload-success: '&c[Chemdah] &7完成.'
+command-player-not-found: '&c[Chemdah] &7玩家离线.'
+command-quest-not-found: '&c[Chemdah] &7任务不存在.'
+command-ui-not-found: '&c[Chemdah] &7任务页面不存在.'
+command-level-not-found: '&c[Chemdah] &7等级类型不存在.'
+command-scenes-file-not-found: '&c[Chemdah] &7演出文件不存在.'
+command-quest-not-accepted: '&c[Chemdah] &7任务未接受.'
+command-quest-info-empty: '&c[Chemdah] &7没有任务.'
+command-quest-info-header: '&c[Chemdah] &7玩家的任务:'
+command-quest-info-name: '&c[Chemdah] &7  &f&n{0}:'
+command-quest-info-name-share: '&c[Chemdah] &7  &f&n{0}: &8(共享)'
+command-quest-info-data: '&c[Chemdah] &7    数据:'
+command-quest-info-start-at: '&c[Chemdah] &7    任务开始于:'
+command-quest-info-body: '&c[Chemdah] &f{0}'
+command-quest-info-bottom-0:
+  - ==: json
+    text: '&c\[Chemdah] &8\[上页] &7{0} / {1} [&a[下页]&a]'
+    args:
+      - hover: '点击翻页'
+        command: '/chq info {2} {3}'
+command-quest-info-bottom-1:
+  - ==: json
+    text: '&c\[Chemdah] [&a[上页]&a] &7{0} / {1} &8\[下页]'
+    args:
+      - hover: '点击翻页'
+        command: '/chq info {2} {3}'
+command-quest-info-bottom-2:
+  - ==: json
+    text: '&c\[Chemdah] [&a[上页]&a] &7{0} / {1} [&a[下页]&a]'
+    args:
+      - hover: '点击翻页'
+        command: '/chq info {2} {3}'
+      - hover: '点击翻页'
+        command: '/chq info {2} {4}'
+command-variables-change: '&c[Chemdah] &7{0}'
+command-variables-list-header: '&c[Chemdah] &7变量: &f{0}'
+command-variables-remove-all-ed: '&c[Chemdah] &f已删除'
+command-level-change: '&c[Chemdah] &7{0}'
+command-script-error:
+  - '&c[Chemdah] &7在运行脚本时发生了错误:'
+  - '&c[Chemdah] &7{0}'
+command-script-not-found: '&c[Chemdah] &7脚本不存在.'
+command-script-not-running: '&c[Chemdah] &7脚本未在运行.'
+command-script-list-all:
+  - '&c[Chemdah] &7所有脚本: &f{0}'
+  - '&c[Chemdah] &7运行脚本: &f{1}'
+command-script-reload-all:
+  - '&c[Chemdah] &7重载完成.'
+command-conversation-not-found: '&c[Chemdah] &7对话不存在.'
+command-adyeshach-not-found: '&c[Chemdah] &7Adyeshach 单位不存在.'
+command-name-generated: '&c[Chemdah] &7名称已生成:'
+command-block-info-is-air: '&c[Chemdah] &7方块为空气.'
+command-block-info-header: '&c[Chemdah] &7方块信息:'
+command-position-header: '&c[Chemdah] &7位置信息:'
+command-wizard-info-not-found: '&c[Chemdah] &7未找到引导.'
+database-error: '&4&l错误! &r插件 &4&lChemdah&r 的数据库未完成初始化.'
+database-error-username: '&4&l警告! &r插件 &4&lChemdah&r 阻止改用户名进入服务器.'
+
+console-quest-locked:
+  - '&6[Checker] {0} 的任务 ({1}) 在被锁定状态下超过 1 秒.'
+  - '&6[Checker] 请检查脚本 (complete, failure, restart) 中是否存在延迟 (delay) 语句.'
+console-automation-plan-error:
+  - '&6[Automation] 任务 {0} 中的计划周期为 0，已自动修正。'
+  - '&6[Automation] 配置:'
+  - '&6{1}'
+console-automation-plan-out-of-date:
+  - '&6[Automation] {0} 的计划时间已过期, 无法分发任务: {1}, 当前时间: {2}'
+  - '&6[Automation] 调试:'
+  - '&6{3}'
+console-message-transmit-not-support: '&6[Developer] 1.19+ 不支持 "enable-message-transmit" 模式'
+console-infer-block-not-support: '&6方块材质不支持使用命名空间, 请使用 {0}'

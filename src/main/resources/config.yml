@@ -1,0 +1,126 @@
+
+
+#         Powered by TabooLib 6.0         #
+
+#CPDD
+database:
+  # 数据加载延迟
+  # 玩家进入服务器后多久开始加载数据
+  join-select-delay: 20
+  # 数据索引类型
+  # 在投入生产环境后不可修改
+  # 可用：NAME、UUID
+  user-index: UUID
+  # 数据储存类型
+  # 可用: LOCAL, SQL
+  use: LOCAL
+  # 数据储存配置
+  source:
+    SQL:
+      host: localhost
+      port: 3306
+      user: root
+      password: root
+      database: test
+      table: chemdah
+
+# 默认状态显示配置
+default-stats:
+  # 停留时间
+  stay: 100
+  # 条类型
+  # 可用: SOLID, SEGMENTED_6, SEGMENTED_10, SEGMENTED_12, SEGMENTED_20
+  style: SOLID
+  # 条颜色
+  # 可用: PINK, BLUE, RED, GREEN, YELLOW, PURPLE, WHITE
+  color: WHITE
+  # 条文本
+  content: '&3[{name}] &7{value}/{target} &f[{percent}%]'
+
+# 默认追踪配置
+default-track:
+  # 开始追踪时显示信息
+  message: '&7Tracking &3[{name}]&7... Click to cancel.'
+  # 信标（粒子光柱）
+  beacon:
+    # 是否启用
+    value: true
+    # 粒子类型
+    type: CLOUD
+    # 粒子宽度
+    size: 0.05
+    # 粒子密度
+    count: 500
+    # 最近可见距离
+    distance: 32
+    # 更新间隔
+    period: 2
+    # 是否固定到终点位置
+    fixed: false
+  # 地标
+  landmark:
+    # 是否启用
+    value: true
+    # 文本
+    content:
+      - '&a{name}'
+      - '&f({distance}m)'
+    # 显示距离
+    distance: 3
+  # 导航
+  navigation:
+    # 是否启用
+    value: true
+    # 是否在主线程中运算
+    # 快速相应但会产生一些性能损耗
+    sync: true
+    # 显示形式
+    # 可用：POINT、ARROW
+    type: POINT
+    # 最远距离
+    distance: 64
+    # POINT 配置
+    point:
+      # 粒子类型
+      type: CRIT
+      # 距离地面高度
+      y: 0
+      # 粒子大小
+      size:
+        x: 0.2
+        y: 0.2
+      # 粒子密度
+      count: 20
+      # 粒子速度
+      speed: 1
+      # 更新间隔
+      period: 60
+    # ARROW 配置
+    arrow:
+      # 粒子类型
+      type: DRIP_LAVA
+      # 距离地面高度
+      y: 0.2
+      # 密度
+      density: 12
+      # 长度
+      len: 0.5
+      # 角度
+      angle: 45
+      # 粒子速度
+      speed: 1
+      # 更新间隔
+      period: 100
+  # 记分板
+  scoreboard:
+    # 是否启用
+    value: true
+    # 自动换行长度
+    length: 64
+    # 文本
+    content:
+      - '&6&lTRACKING'
+      - - ''
+        - ' &e{name}:'
+        - ' &f{description}'
+      - ''

@@ -1,0 +1,10 @@
+
+
+#         Powered by TabooLib 6.0         #
+
+
+synchronous:
+  # 将玩家数据与 Vault 挂钩
+  player-data-to-vault: ~
+  # 将玩家数据映射到 Minecraft 玩家经验
+  player-level-to-minecraft: ~

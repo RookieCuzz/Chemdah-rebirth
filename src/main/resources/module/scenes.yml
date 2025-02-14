@@ -1,0 +1,32 @@
+
+
+#         Powered by TabooLib 6.0         #
+
+
+example:
+  # 场景世界名
+  in: world
+  # 场景状态
+  state:
+    0:
+      # 坐标
+      relative: 0 80 0
+      # 方法
+      set:
+        - 1 1 1 > stone
+        - 0 0 0 ~ 2 0 2 > stone
+      auto-next: 20
+      $: ~
+    1:
+      # 坐标
+      relative: 0 80 0
+      # 方法
+      copy:
+        # 从世界复制
+        from-world: ~
+        # 复制范围
+        from: 0 0 0 ~ 10 10 10
+        # 粘贴范围
+        to: 0 0 0
+      auto-next: ~
+      $: ~

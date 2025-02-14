@@ -1,0 +1,10 @@
+
+
+#         Powered by TabooLib 6.0         #
+
+
+example:
+  # 领域世界名
+  in: world
+  # 领域范围
+  area: 0 0 0 ~ 10 10 10

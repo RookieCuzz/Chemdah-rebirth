@@ -1,0 +1,28 @@
+
+
+#         Powered by TabooLib 6.0         #
+
+
+example_0:
+  # 引导所在世界名
+  in: world
+  # 路径节点
+  # 如果距离目标点超过 32 格，则建议分为多个节点
+  # 从上至下，起点到终点
+  nodes:
+    - 50 80 0
+    - 60 80 0
+  # 距离终点多少格时结束
+  finish-distance: 2.0
+  # 当玩家离引导 NPC 多远时停止移动
+  waiting-distance: 3
+  # 禁用对话
+  disable-conversation: true
+  # 特定状态触发时运行脚本
+  event:
+    waiting: |-
+      tell "I'm waiting for you"
+    continue: |-
+      tell "Quickly come to me"
+  # 脚本触发冷却
+  event-cooldown: 2s
