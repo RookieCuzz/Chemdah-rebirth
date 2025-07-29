@@ -27,7 +27,7 @@ object IBlockBreak : ObjectiveCountableI<BlockBreakEvent>() {
             data.toPosition().inside(it.block.location)
         }
         addSimpleCondition("material") { data, it ->
-            println(data)
+//            println(data)
             data.toInferBlock().isBlock(it.block)
         }
         addSimpleCondition("exp") { data, it ->

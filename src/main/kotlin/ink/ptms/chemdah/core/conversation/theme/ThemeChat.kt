@@ -14,15 +14,16 @@ import net.md_5.bungee.api.chat.TextComponent
 import org.bukkit.event.player.AsyncPlayerChatEvent
 import org.bukkit.event.player.PlayerItemHeldEvent
 import org.bukkit.event.player.PlayerSwapHandItemsEvent
-import taboolib.common.platform.ProxyParticle
 import taboolib.common.platform.event.EventPriority
 import taboolib.common.platform.event.SubscribeEvent
 import taboolib.common.platform.function.adaptCommandSender
 import taboolib.common.platform.function.adaptPlayer
 import taboolib.common.platform.function.submit
+import taboolib.common.util.Vector
 import taboolib.common5.Coerce
 import taboolib.common5.util.printed
 import taboolib.library.reflex.Reflex.Companion.invokeConstructor
+import taboolib.library.xseries.XParticle
 import taboolib.module.chat.TellrawJson
 import taboolib.module.chat.colored
 import taboolib.module.chat.uncolored
@@ -173,7 +174,10 @@ object ThemeChat : Theme<ThemeChatSettings>() {
 
     override fun onBegin(session: Session): CompletableFuture<Void> {
         if (session.conversation.noFlag("NO_EFFECT:PARTICLE")) {
-            ProxyParticle.CLOUD.sendTo(adaptPlayer(session.player), session.origin.clone().add(0.0, 0.5, 0.0).toProxyLocation())
+            adaptPlayer(session.player).sendParticle(  XParticle.CLOUD.name, session.origin.clone().add(0.0, 0.5, 0.0).toProxyLocation(),
+                Vector(1.0, 0.0, 1.0),1,
+                0.0,null)
+
         }
         return super.onBegin(session)
     }
@@ -260,10 +264,10 @@ object ThemeChat : Theme<ThemeChatSettings>() {
     ) {
         // 获取有效回复
         session.conversation.playerSide.checked(session).thenApply { replies ->
-            println("玩家回复有"+replies.size)
-            replies.forEach(){
-                println(it)
-            }
+//            println("玩家回复有"+replies.size)
+//            replies.forEach(){
+//                println(it)
+//            }
             // 最终效果
             val animationStopped = lineIndex + 1 >= messages.size && stopAnimation
             // 如果是最终效果并且存在对话转发，则不发送白信息
@@ -318,7 +322,7 @@ object ThemeChat : Theme<ThemeChatSettings>() {
                                     var newLine = false
                                     // 回复内容
                                     val text = reply.build(session)
-                                    println(text)
+//                                    println(text)
                                     // 回复结构
                                     val rf = getReplyFormat(session, reply).replace("player_side", "playerSide", rep = text).replace("index", rep = idx + 1)
                                     // 在单行中显示回复内容

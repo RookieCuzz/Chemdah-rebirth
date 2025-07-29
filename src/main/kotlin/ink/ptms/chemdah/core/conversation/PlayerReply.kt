@@ -99,26 +99,26 @@ data class PlayerReply(val root: MutableMap<String, Any?>) {
      */
     fun select(session: Session): CompletableFuture<Void> {
         // 已选择
-        println("debug 1")
+//        println("debug 1")
         if (session.isSelected) {
             return CompletableFuture.completedFuture(null)
         }
         // 事件
         if (!ConversationEvents.SelectReply(session.player, session, this).call()) {
-            println("debug 2")
+//            println("debug 2")
             return CompletableFuture.completedFuture(null)
         }
         // 记录选择
         if (uniqueId != null && session.player.isChemdahProfileLoaded) {
             session.player.chemdahProfile.persistentDataContainer["conversation.unique.$uniqueId"] = true
         }
-        println("debug 3")
+//        println("debug 3")
 
         session.isSelected = true
         return try {
-            println("debug3.5")
+//            println("debug3.5")
             KetherShell.eval(action, namespace = namespaceConversationPlayer) { extend(session.variables) }.thenAccept {
-                println("debug 4")
+//                println("debug 4")
                 if (session.isNext) {
                     session.isNext = false
                 } else {
@@ -127,7 +127,7 @@ data class PlayerReply(val root: MutableMap<String, Any?>) {
                 }
             }
         } catch (e: Throwable) {
-            println("debug 5")
+//            println("debug 5")
             e.printKetherErrorMessage()
             session.close()
             CompletableFuture.completedFuture(null)

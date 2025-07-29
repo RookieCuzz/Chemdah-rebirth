@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     `java-library`
     `maven-publish`
-    id("io.izzel.taboolib") version "2.0.19" // 最低要求
+    id("io.izzel.taboolib") version "2.0.22" // 最低要求
     id("org.jetbrains.kotlin.jvm") version "2.1.0"
     id("org.jetbrains.dokka") version "1.6.0"
 }
@@ -40,7 +40,7 @@ taboolib {
             install(Database)
 
     }
-    version { taboolib = "6.2.2" }
+    version { taboolib = "6.2.3-20d868d" }
     relocate("ink.ptms.um", "ink.ptms.chemdah.um")
 }
 
@@ -53,7 +53,7 @@ repositories {
 
 dependencies {
     // adyeshach
-    compileOnly("ink.ptms.adyeshach:all:2.0.0-snapshot-4")
+    compileOnly("ink.ptms.adyeshach:all:2.0.0-snapshot-4"   )
     taboo("ink.ptms:um:1.1.5")
     // server
     compileOnly("ink.ptms.core:v11604:11604")

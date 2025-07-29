@@ -9,13 +9,13 @@ import ink.ptms.chemdah.util.asListOrLines
 import org.bukkit.Location
 import org.bukkit.Particle
 import org.bukkit.entity.Player
-import taboolib.common.platform.ProxyParticle
 import taboolib.common.platform.function.adaptPlayer
 import taboolib.common.platform.function.submit
 import taboolib.common.util.Vector
 import taboolib.common.util.asList
 import taboolib.common5.Baffle
 import taboolib.library.configuration.ConfigurationSection
+import taboolib.library.xseries.XParticle
 import taboolib.module.chat.colored
 import taboolib.module.navigation.NodeEntity
 import taboolib.module.navigation.createPathfinder
@@ -93,10 +93,11 @@ class TrackBeacon(val config: ConfigurationSection, val root: ConfigurationSecti
      * 粒子类型
      */
     val type = try {
-        ProxyParticle.valueOf(config.getString("beacon-option.type", root.getString("type"))!!.uppercase())
+        XParticle.valueOf(config.getString("beacon-option.type", root.getString("type"))!!.uppercase())
     } catch (ex: Throwable) {
-        ProxyParticle.HAPPY_VILLAGER
+        XParticle.HAPPY_VILLAGER
     }
+
 
     /**
      * 粒子宽度
@@ -133,7 +134,8 @@ class TrackBeacon(val config: ConfigurationSection, val root: ConfigurationSecti
             val direction = center.toVector().subtract(player.location.toVector()).normalize()
             player.location.add(direction.multiply(distance.coerceAtMost(distance)))
         }
-        type.sendTo(adaptPlayer(player), pos.toProxyLocation(), Vector(size, 128.0, size), count)
+        adaptPlayer(player).sendParticle(type.name,pos.toProxyLocation(),Vector(size, 128.0, size), count, 1.0,null)
+//        type.sendTo(adaptPlayer(player), pos.toProxyLocation(), Vector(size, 128.0, size), count)
     }
 }
 
@@ -193,9 +195,9 @@ class TrackNavigation(val config: ConfigurationSection, val root: ConfigurationS
      * 点形特效相关设置
      */
     val pointType = try {
-        ProxyParticle.valueOf(config.getString("navigation-option.point.type", root.getString("point.type"))!!.uppercase())
+        XParticle.valueOf(config.getString("navigation-option.point.type", root.getString("point.type"))!!.uppercase())
     } catch (ex: Throwable) {
-        ProxyParticle.CRIT
+        XParticle.CRIT
     }
     val pointY = config.getDouble("navigation-option.point.y", root.getDouble("point.y"))
     val pointSizeX = config.getDouble("navigation-option.point.size.x", root.getDouble("point.size.x"))
@@ -232,12 +234,16 @@ class TrackNavigation(val config: ConfigurationSection, val root: ConfigurationS
             nodes.forEachIndexed { index, node ->
                 // 速度
                 submit(delay = index * pointSpeed) {
-                    pointType.sendTo(
-                        player = adaptPlayer(player),
-                        location = node.asBlockPos().toLocation(center.world!!).add(0.5, pointY, 0.5).toProxyLocation(),
-                        offset = Vector(pointSizeX, pointSizeY, pointSizeX),
-                        count = pointCount
-                    )
+//                    pointType.sendTo(
+//                        player = adaptPlayer(player),
+//                        location = node.asBlockPos().toLocation(center.world!!).add(0.5, pointY, 0.5).toProxyLocation(),
+//                        offset = Vector(pointSizeX, pointSizeY, pointSizeX),
+//                        count = pointCount
+//                    )
+
+
+                    adaptPlayer(player).sendParticle(pointType.name,node.asBlockPos().toLocation(center.world!!).add(0.5, pointY, 0.5).toProxyLocation(),
+                        Vector(pointSizeX, pointSizeY, pointSizeX), pointCount, 1.0,null)
                 }
             }
         }
