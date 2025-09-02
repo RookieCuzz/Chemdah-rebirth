@@ -13,10 +13,6 @@ import kr.toxicity.hud.api.bukkit.event.CustomPopupEvent
 import kr.toxicity.hud.api.bukkit.update.BukkitEventUpdateEvent
 import kr.toxicity.hud.api.player.HudPlayer
 import kr.toxicity.hud.api.popup.Popup
-import org.bukkit.event.player.PlayerDropItemEvent
-import org.bukkit.event.player.PlayerInteractEvent
-import org.bukkit.event.player.PlayerItemHeldEvent
-import org.bukkit.event.player.PlayerSwapHandItemsEvent
 import org.bukkit.scheduler.BukkitRunnable
 
 import taboolib.common.platform.event.EventPriority
@@ -29,6 +25,7 @@ import taboolib.module.nms.sendPacket
 import taboolib.platform.util.toProxyLocation
 import java.util.concurrent.CompletableFuture
 import org.bukkit.event.block.Action
+import org.bukkit.event.player.*
 import taboolib.common.util.Vector
 import taboolib.library.xseries.XParticle
 import java.util.*
@@ -74,6 +71,7 @@ object ThemeDialog  : Theme<ThemeDialogSetting>(){
         session.npcTalking = true
         // 文本动画 —— 打印机效果
         var stb:StringBuilder=StringBuilder()
+
         val messageAnimated = message.colored().forEach() { if (ThemeChat.settings.animation){
             stb.append(it)
 
@@ -87,7 +85,7 @@ object ThemeDialog  : Theme<ThemeDialogSetting>(){
         dialogEvent.variables["yosinnpcavatar"] = "\uDAC0\uDC01"
         dialogEvent.variables["yosinnpcname"] = "测试NPC"
         var title = session.conversation.option.title
-        if (title.contains("@")){
+        if (title.contains("@")){ 
             var nameX = title.split("@");
             dialogEvent.variables["yosinnpcname"]= nameX[0]
             dialogEvent.variables["yosinnpcavatar"] = nameX[1]
@@ -106,7 +104,7 @@ object ThemeDialog  : Theme<ThemeDialogSetting>(){
 //            println(it)
 //        }
         sendDialogBarWithDelay(hudPlayer!!,message,
-            messageAnimation, dialogPopup!!,
+             dialogPopup!!,
             dialogEvent, updateEvent,session,future)
 
 //        }
@@ -213,7 +211,6 @@ object ThemeDialog  : Theme<ThemeDialogSetting>(){
     fun sendDialogBarWithDelay(
     hudPlayer: HudPlayer,
     messages: List<String>,
-    messageCharOneByOne: List<String>,
     dialogPopup: Popup,
     dialogEvent: CustomPopupEvent,
     updateEvent: BukkitEventUpdateEvent,
@@ -235,6 +232,8 @@ object ThemeDialog  : Theme<ThemeDialogSetting>(){
         }
 
 
+
+    //持续往currentBatch添加行数,那么对话就会持续下去
 
     if (messageBatches.isNotEmpty()) {
         object : BukkitRunnable() {
@@ -493,15 +492,15 @@ object ThemeDialog  : Theme<ThemeDialogSetting>(){
             e.isCancelled = true
             session.npcTalking = false
             session.isClosed=true
-            println("尝试关闭对话")
             session.close(true)
         }
     }
     //左键 确定选项
     @SubscribeEvent
-    private fun onClick(e: PlayerInteractEvent) {
+    private fun onClick(e: PlayerAnimationEvent) {
         val session = e.player.conversationSession ?: return
-        if (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK){
+
+        if (  e.animationType==PlayerAnimationType.ARM_SWING){
             if (session.conversation.option.theme == "dialog") {
                 e.isCancelled = true
                 if (session.npcTalking) {
