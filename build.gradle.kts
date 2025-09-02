@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     `java-library`
     `maven-publish`
-    id("io.izzel.taboolib") version "2.0.22" // 最低要求
+    id("io.izzel.taboolib") version "2.0.23" // 最低要求
     id("org.jetbrains.kotlin.jvm") version "2.1.0"
     id("org.jetbrains.dokka") version "1.6.0"
 }
